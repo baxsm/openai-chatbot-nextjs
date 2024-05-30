@@ -1,5 +1,9 @@
 import { chatbotPrompt } from "@/helpers/chatbot-prompt";
-import { ChatGPTMessage, OpenAIStream, OpenAIStreamPayload } from "@/lib/openai-stream";
+import {
+  ChatGPTMessage,
+  OpenAIStream,
+  OpenAIStreamPayload,
+} from "@/lib/openai-stream";
 import { MessageArraySchema } from "@/lib/validators/message";
 
 export async function POST(req: Request) {
@@ -18,7 +22,7 @@ export async function POST(req: Request) {
   });
 
   const payload: OpenAIStreamPayload = {
-    model: "gpt-3.5-turbo",
+    model: "nousresearch/nous-capybara-7b:free",
     messages: outboundMessages,
     temperature: 0.4,
     top_p: 1,
@@ -26,7 +30,7 @@ export async function POST(req: Request) {
     presence_penalty: 0,
     max_tokens: 150,
     stream: true,
-    n: 1
+    n: 1,
   };
 
   const stream = await OpenAIStream(payload);
