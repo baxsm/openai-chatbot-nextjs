@@ -22,7 +22,7 @@ export async function POST(req: Request) {
   });
 
   const payload: OpenAIStreamPayload = {
-    model: "nousresearch/nous-capybara-7b:free",
+    model: "openai/gpt-3.5-turbo",
     messages: outboundMessages,
     temperature: 0.4,
     top_p: 1,
